@@ -18,7 +18,12 @@ m[4][3] = 1
 
     
 
-def wrap(r, c, matrix):
+def wrap(cell, dimension):
+    if (cell > dimension) or (cell < 0):
+        return cell % dimension
+    else:
+        return cell
+
 
 def check_neighbors(r, c, matrix):
     neighbors = []
@@ -26,7 +31,7 @@ def check_neighbors(r, c, matrix):
         for col_i in range(len(matrix[0][0])) : # each column
             for row_check in (-1, 0, 1):
                 for col_check in (-1, 0, 1):
-                    if matrix[row_i + row_check][col_i + row_check] == 1
+                    if matrix[wrap(r + row_check, len(matrix)][wrap(c + row_check)] == 1
                     
 check_neighbors(m)
                     
