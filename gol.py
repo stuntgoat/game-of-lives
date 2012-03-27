@@ -7,7 +7,6 @@ C = 45
 
 def create_matrix(r, c):
     return [[0 for i in range(r)] for j in range(c)]
-
 matrix = create_matrix(R, C)
 
 matrix[0][2] = 1
@@ -52,12 +51,6 @@ matrix[41][4] = 1
 matrix[40][4] = 1
 matrix[39][3] = 1
 
-
-
-
-
-
-
 def wrap(r, c, R=R, C=C):
     return (r % R, c % C)
 
@@ -72,7 +65,6 @@ def count_neighbors(r, c, matrix=matrix, R=R, C=C):
                 nneighbors += 1
                 #print "cell %s has neighbor: %s" % ((r, c), (cell_row, cell_col))
     return nneighbors
-
 
 def generate_next(matrix):
     next = create_matrix(len(matrix), len(matrix[0]))
@@ -89,27 +81,13 @@ def generate_next(matrix):
             elif count == 3:
                 next[row][cell] = 1
     return next
+
 count = 0
 while 1:
-
     for line in matrix:
-        
         sys.stdout.write("%s \n" % line)
-#        sys.stdout.write("\r" % line)
-        sys.stdout.seek(0)
-        #sys.stdout.flush()
     sys.stdout.write('%d \n' % count)
-    
-    sys.stdout.seek(0)
-    
     matrix = generate_next(matrix)
     sleep(.01)
     count += 1
-    
-            
-
-# Any live cell with fewer than two live neighbours dies, as if caused by under-population.
-# Any live cell with two or three live neighbours lives on to the next generation.
-# Any live cell with more than three live neighbours dies, as if by overcrowding.
-# Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.                    
         
